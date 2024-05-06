@@ -20,7 +20,8 @@ En este proyecto se ha implementado un sistema de Gestión de inventario basado 
 
 
 ## Arquitectura del sistema
-![diagram-export-6-5-2024-10_16_53](https://github.com/ricardorma/microservices_system/assets/45419870/10e24e16-c41a-432b-a2b8-f6f360007a7e)
+![diagram-export-6-5-2024-11_49_12](https://github.com/ricardorma/microservices_system/assets/45419870/e4a3c76e-8c0d-4f59-9b55-d989703c6cb6)
+
 
 
 ## API Reference
