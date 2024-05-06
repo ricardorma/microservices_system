@@ -18,8 +18,10 @@ En este proyecto se ha implementado un sistema de Gestión de inventario basado 
 
 **Framework:** Springboot
 
-### Arquitectura del sistema
+
+## Arquitectura del sistema
 ![diagram-export-6-5-2024-10_16_53](https://github.com/ricardorma/microservices_system/assets/45419870/10e24e16-c41a-432b-a2b8-f6f360007a7e)
+
 
 ## API Reference
 
