@@ -1,6 +1,7 @@
 package com.backend.inventory_service.controller;
 
 import com.backend.inventory_service.model.dto.BaseResponse;
+import com.backend.inventory_service.model.dto.InventoryResponse;
 import com.backend.inventory_service.model.dto.OrderItemRequest;
 import com.backend.inventory_service.services.InventoryService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,12 @@ public class InventoryController {
     @ResponseStatus(HttpStatus.OK)
     public BaseResponse areInStock(@RequestBody List<OrderItemRequest> orderItems) {
         return inventoryService.areInStock(orderItems);
+    }
+
+    @GetMapping("/inventories")
+    @ResponseStatus(HttpStatus.OK)
+    public List<InventoryResponse> allInventories() {
+        return this.inventoryService.getInventories();
     }
 
 }

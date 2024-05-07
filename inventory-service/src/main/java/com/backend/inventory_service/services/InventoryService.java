@@ -1,6 +1,7 @@
 package com.backend.inventory_service.services;
 
 import com.backend.inventory_service.model.dto.BaseResponse;
+import com.backend.inventory_service.model.dto.InventoryResponse;
 import com.backend.inventory_service.model.dto.OrderItemRequest;
 import com.backend.inventory_service.model.entities.Inventory;
 import com.backend.inventory_service.repository.InventoryRepository;
@@ -37,6 +38,15 @@ public class InventoryService {
                 errorList.add("Product with sku " + orderItem.getSku() + " has insufficient quantity");
             }
         });
-        return !errorList.isEmpty() ? new BaseResponse(errorList.toArray(new String[0])) : new BaseResponse(null);
+        return errorList.isEmpty() ? new BaseResponse(errorList.toArray(new String[0])) : new BaseResponse(null);
+    }
+
+    public List<InventoryResponse> getInventories() {
+        List<Inventory> inventories = this.inventoryRepository.findAll();
+        return inventories.stream().map(this::mapInventoryToInventoryResponse).toList();
+    }
+
+    private InventoryResponse mapInventoryToInventoryResponse(Inventory inventory) {
+        return new InventoryResponse(inventory.getId(), inventory.getSku(), inventory.getQuantity());
     }
 }

@@ -30,7 +30,7 @@ public class OrderService {
             Order order = new Order();
             order.setOrderNumber(UUID.randomUUID().toString());
             order.setOrderItems(orderRequest.getOrderItems().stream().
-                    map(value -> mapOrderItemRequestToOrderItem(value, order)).toList());
+                    map(orderItemRequest  -> mapOrderItemRequestToOrderItem(orderItemRequest, order)).toList());
             this.orderRepository.save(order);
         } else {
             throw new IllegalArgumentException("Some of the products are not in stock");
@@ -38,7 +38,7 @@ public class OrderService {
     }
 
     private OrderItems mapOrderItemRequestToOrderItem(OrderItemRequest orderItemRequest, Order order) {
-        return OrderItems.builder().id(orderItemRequest.getId()).
+        return OrderItems.builder().
                 sku(orderItemRequest.getSku()).
                 price(orderItemRequest.getPrice()).
                 quantity(orderItemRequest.getQuantity()).

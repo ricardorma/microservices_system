@@ -5,6 +5,7 @@ import com.backend.products_service.model.dto.ProductResponse;
 import com.backend.products_service.services.ProductService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,8 +19,9 @@ public class ProductController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
-    public void addProduct(@RequestBody ProductRequest productRequest) {
+    public ResponseEntity<String> addProduct(@RequestBody ProductRequest productRequest) {
         this.productService.addProduct(productRequest);
+        return ResponseEntity.status(HttpStatus.CREATED).body("Producto agregado correctamente");
     }
 
     @GetMapping
