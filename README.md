@@ -60,12 +60,10 @@ Asegúrate de tener instalados los siguientes programas:
     ```sh
     docker-compose up --build
     ```
+3. Configura el servidor de keycloak para poder tener acceso a los microservicios y poder realizar peticiones.
 
-3. Los servicios estarán disponibles en los siguientes puertos:
+4. Los servicios estarán disponibles a través del puerto `http://localhost:8080` del api Gateway
 
-    - **Producto:** `http://localhost:8081`
-    - **Inventario:** `http://localhost:8082`
-    - **Órdenes:** `http://localhost:8083`
 
 ---
 
