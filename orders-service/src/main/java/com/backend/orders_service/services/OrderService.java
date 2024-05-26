@@ -1,10 +1,14 @@
 package com.backend.orders_service.services;
 
+import com.backend.orders_service.enums.OrderStatus;
+import com.backend.orders_service.event.OrderEvent;
 import com.backend.orders_service.model.dto.*;
 import com.backend.orders_service.model.entities.Order;
 import com.backend.orders_service.model.entities.OrderItems;
 import com.backend.orders_service.repository.OrderRepository;
+import com.backend.orders_service.utils.JsonUtils;
 import lombok.RequiredArgsConstructor;
+import org.springframework.kafka.core.KafkaTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
 
@@ -17,8 +21,9 @@ public class OrderService {
 
     private final OrderRepository orderRepository;
     private final WebClient.Builder webClientBuilder;
+    private final KafkaTemplate<String, String> kafkaTemplate;
 
-    public void placeOrder(OrderRequest orderRequest) {
+    public OrderResponse placeOrder(OrderRequest orderRequest) {
 
         BaseResponse result = this.webClientBuilder.build().
                 post().
@@ -29,9 +34,14 @@ public class OrderService {
         if (result != null && !result.hasErrors()) {
             Order order = new Order();
             order.setOrderNumber(UUID.randomUUID().toString());
-            order.setOrderItems(orderRequest.getOrderItems().stream().
-                    map(orderItemRequest  -> mapOrderItemRequestToOrderItem(orderItemRequest, order)).toList());
-            this.orderRepository.save(order);
+            order.setOrderItems(orderRequest.getOrderItems().stream().map(orderItemRequest ->
+                    mapOrderItemRequestToOrderItem(orderItemRequest, order)).toList());
+            var savedOrder = this.orderRepository.save(order);
+
+            // TODO: Mandamos mensajes a kafka
+            this.kafkaTemplate.send("orders-event", JsonUtils.toJson(new OrderEvent(savedOrder.getOrderNumber(),
+                    savedOrder.getOrderItems().size(), OrderStatus.PLACED)));
+            return mapOrderListToOrderResponseList(savedOrder);
         } else {
             throw new IllegalArgumentException("Some of the products are not in stock");
         }

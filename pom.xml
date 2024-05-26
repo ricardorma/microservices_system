@@ -27,6 +27,7 @@
 		<module>orders-service</module>
 		<module>products-service</module>
 		<module>discovery-server</module>
+		<module>notifications-service</module>
 	</modules>
 
 	<dependencies>
