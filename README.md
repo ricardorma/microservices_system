@@ -5,10 +5,13 @@ En este proyecto se ha implementado un sistema de Gestión de Inventario basado 
 - 📦 **Producto**
 - 📊 **Inventario**
 - 🛒 **Órdenes**
+- 🌀 **Servidor de Eureka**
+- 🌐 **API Gateway**
 
 ## 🚀 Tech Stack
 
-### 💻 Lenguaje de Programación
+### 💻 Framework y Lenguaje de Programación
+- Spring Boot
 - Java
 
 ### 🛠️ Despliegue y Control de Versiones
@@ -22,8 +25,11 @@ En este proyecto se ha implementado un sistema de Gestión de Inventario basado 
 ### 📬 Sistema de Notificaciones
 - Kafka
 
-### 🎨 Framework
-- Spring Boot
+### 🔍 Pruebas
+- Postman
+
+### 🔑 Control de Acceso
+- Keycloak
 
 ---
 
