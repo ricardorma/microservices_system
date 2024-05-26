@@ -1,25 +1,86 @@
+# 🌐 Sistema Básico de Microservicios - Gestión de Inventario
 
-# Sistema básico de microservicios - Gestión de inventario
+En este proyecto se ha implementado un sistema de Gestión de Inventario basado en microservicios, donde se distinguen los siguientes servicios:
 
-En este proyecto se ha implementado un sistema de Gestión de inventario basado en microservicios, donde se distinguen los siguientes servicios:
+- 📦 **Producto**
+- 📊 **Inventario**
+- 🛒 **Órdenes**
 
-* Producto
-* Inventario
-* Ordenes
+## 🚀 Tech Stack
+
+### 💻 Lenguaje de Programación
+- Java
+
+### 🛠️ Despliegue y Control de Versiones
+- GitHub
+- Docker
+
+### 🗄️ Bases de Datos
+- MySQL
+- PostgreSQL
+
+### 📬 Sistema de Notificaciones
+- Kafka
+
+### 🎨 Framework
+- Spring Boot
+
+---
+
+## 📂 Estructura del Proyecto
+![diagram-export-26-5-2024-14_05_17](https://github.com/ricardorma/microservices_system/assets/45419870/0a79152e-b3a6-4bf5-8077-132a0b68d18e)
 
 
-## Tech Stack
+## 📚 Documentación de la API
 
-**Code language:** Java
+Cada servicio tiene su propia documentación de API, accesible en los siguientes endpoints una vez que los contenedores estén en ejecución:
 
-**Despliegue y control de versiones:** Github, docker
+- **Producto:** `http://localhost:8081/swagger-ui.html`
+- **Inventario:** `http://localhost:8082/swagger-ui.html`
+- **Órdenes:** `http://localhost:8083/swagger-ui.html`
 
-**BBDD:** MySQL, Postgresql
 
-**Sistema de notificaciones**: Kafka
+## 🔧 Configuración y Despliegue
 
-**Framework:**: Springboot
+### Prerrequisitos
 
-## Diseño del sistema
-![diagram-export-26-5-2024-14_05_17](https://github.com/ricardorma/microservices_system/assets/45419870/ce9a58d6-7e25-4325-878d-bd4d94dce6fb)
+Asegúrate de tener instalados los siguientes programas:
 
+- Docker
+- Docker Compose
+- Java 11 o superior
+
+### Instalación
+
+1. Clona este repositorio:
+
+    ```sh
+    git clone https://github.com/tu-usuario/sistema-gestion-inventario.git
+    cd sistema-gestion-inventario
+    ```
+
+2. Construye y levanta los contenedores:
+
+    ```sh
+    docker-compose up --build
+    ```
+
+3. Los servicios estarán disponibles en los siguientes puertos:
+
+    - **Producto:** `http://localhost:8081`
+    - **Inventario:** `http://localhost:8082`
+    - **Órdenes:** `http://localhost:8083`
+
+---
+
+## 🛠️ Mantenimiento
+
+Para detener y eliminar los contenedores, ejecuta:
+
+```sh
+docker-compose down
+```
+
+## 📞 Contacto
+
+Creador: [Ricardo Rodríguez Mateos-Aparicio](https://github.com/ricardorma)  
